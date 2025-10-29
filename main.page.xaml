@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SimpleTodoList2.MainPage">
+
+    <ScrollView>
+        <StackLayout Padding="5" Spacing="5">
+
+
+            
+
+            <Label Text="Мой список задач" HorizontalOptions="Center" FontSize="24"></Label>
+
+            <VerticalStackLayout Padding="5" >
+                <Grid Padding="5">
+                    <Entry x:Name="TaskEntry" 
+                 Placeholder="Введите задачу..."
+                                   
+                />
+
+                    <Button x:Name="Add"
+                         Text="Добавить"
+                     Clicked="Add_Clicked"
+                      HorizontalOptions="End"
+                    Padding="10"
+                     />
+                </Grid>
+            </VerticalStackLayout>
+            <BoxView  BindingContext=""/>
+            
+            <Label x:Name="LabelTask" Text="{Binding Id}"/>
+
+            <FlexLayout Direction="Row" AlignContent="Center" JustifyContent="SpaceEvenly">
+                <Button x:Name="DelSel" Text="Удалить выбранную" 
+             Background="Red" 
+                        Clicked="DelSel_Clicked"
+             HorizontalOptions="Start"/>
+                <Button x:Name="DelAll" Text="Очистить все" 
+             HorizontalOptions="End" 
+             Background="Orange" 
+                        Clicked="DelAll_Clicked"/>
+
+            </FlexLayout>
+
+            
+            <ListView x:Name="TaskListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                    
+                        <ViewCell>
+                            
+                            <Grid Padding="10" Margin="10"  >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                   
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <CheckBox Grid.Column="0" Grid.Row="1" x:Name="TaskCheck"/>
+                                <Label  Grid.Column="1" Grid.Row="1" Text="{Binding Title}" VerticalOptions="Center"/>
+                                
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ScrollView>
+
+    
+    
+</ContentPage>
