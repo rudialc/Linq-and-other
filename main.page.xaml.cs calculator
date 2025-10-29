@@ -1,0 +1,128 @@
+namespace Calculator
+{
+    public partial class MainPage : ContentPage
+    {
+        public string CurrentDisplay { get; set; } = String.Empty;
+        public string ResultDisplay { get; set; }
+        string[] operators = { "=", "+", "-", "*", "/" };
+        string[] numbers = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+        bool reset = false;
+        string MathOperator;
+
+
+        public MainPage()
+        {
+            InitializeComponent();
+            UpdateDisplay();
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            var btn = sender as Button;
+            var input = btn.Text;
+
+            if (numbers.Contains(input))
+            {
+                CurrentDisplay += btn.Text;
+                reset = false;
+                CalculateLabel.Text = CurrentDisplay;
+            }
+            else if (operators.Contains(input))
+            {
+                if (input == "=")
+                {
+                    
+                    Operation();
+                    MathOperator = String.Empty;
+                    ResultDisplay = String.Empty;
+                    reset = true;
+                }
+                else
+                {
+                  
+                    if (!string.IsNullOrEmpty(MathOperator))
+                    {
+                        Operation();
+                    }
+
+                    ResultDisplay = CurrentDisplay;
+                    MathOperator = input;
+
+                    CurrentDisplay += btn.Text;
+                    UpdateDisplay();
+                }
+                if(input == "C") 
+                {
+                    CurrentDisplay = "0";
+                    ResultDisplay = string.Empty; reset = false;
+                    UpdateDisplay();
+                }
+                if (input == "00")
+                {
+                    if (CurrentDisplay != "0")
+                    {
+                        CurrentDisplay += "00";
+                        ResultDisplay = CurrentDisplay;
+                        UpdateDisplay();
+                        reset= true;
+                        
+                    }
+                    return;
+                }
+                if(input == "+/-") 
+                {
+                    CurrentDisplay = CurrentDisplay.StartsWith("-") ? CurrentDisplay.Substring(1) : "-" + CurrentDisplay;
+                    UpdateDisplay();
+                }
+            }
+        }
+
+        public void Operation()
+        {
+           
+            string[] parts;
+            double x, y, result = 0;
+
+            if (MathOperator == "+")
+                parts = CurrentDisplay.Split('+');
+            else if (MathOperator == "-")
+                parts = CurrentDisplay.Split('-');
+            else if (MathOperator == "*")
+                parts = CurrentDisplay.Split('*');
+            else if (MathOperator == "/")
+                parts = CurrentDisplay.Split('/');
+            else
+                return;
+
+            if (parts.Length < 2)
+                return;
+
+            x = double.Parse(parts[0]);
+            y = double.Parse(parts[1]);
+
+            switch (MathOperator)
+            {
+                case "/":
+                    result = x / y;
+                    break;
+                case "*":
+                    result = x * y;
+                    break;
+                case "+":
+                    result = x + y;
+                    break;
+                case "-":
+                    result = x - y;
+                    break;
+            }
+
+            CurrentDisplay = result.ToString();
+            CalculateLabel.Text = CurrentDisplay;
+            reset = true;
+        }
+        private void UpdateDisplay()
+        {
+            CalculateLabel.Text = CurrentDisplay; 
+        }
+    }
+}
