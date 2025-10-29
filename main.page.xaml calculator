@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Calculator.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout  Spacing="5"
+                      Padding="25">
+            <Entry x:Name="CalculateLabel" 
+        FontSize="38"
+        HorizontalTextAlignment="End"
+        TextColor="Black"
+        HeightRequest="60"
+                />
+
+            <Grid RowSpacing="10" ColumnSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" x:Name="C"
+                     Grid.Column="0" Text="C"
+                     FontSize="28" Clicked="Button_Clicked"/>
+
+                <Button Grid.Row="0" x:Name="Abc"
+                     Grid.Column="1" FontSize="28"
+                     Clicked="Button_Clicked" Text="+/-"/>
+
+                <Button Grid.Row="0" x:Name="ABD"
+                     Grid.Column="2" Clicked="Button_Clicked"
+                     FontSize="28" Text="%"
+                     />
+                <Button Grid.Row="0" x:Name="Del"
+                     Grid.Column="3" Text="÷"
+                     Clicked="Button_Clicked" FontSize="28"/>
+
+                <Button Grid.Row="1" x:Name="Seven"
+                     Grid.Column="0" FontSize="28"
+                     Clicked="Button_Clicked" Text="7"/>
+                <Button Grid.Row="1" x:Name="Eight"
+                     Grid.Column="1" FontSize="28"
+                     Clicked="Button_Clicked" Text="8"/>
+                <Button Grid.Row="1" x:Name="Nine"
+                     Grid.Column="2" FontSize="28"
+                     Clicked="Button_Clicked" Text="9"/>
+                <Button Grid.Row="1" x:Name="umn"
+                     Grid.Column="3" FontSize="28"
+                     Clicked="Button_Clicked" Text="*"/>
+
+                <Button Grid.Row="2" x:Name="four"
+                     Grid.Column="0" FontSize="28"
+                     Clicked="Button_Clicked" Text="4"/>
+                <Button Grid.Row="2" x:Name="five"
+                     Grid.Column="1" FontSize="28"
+                     Clicked="Button_Clicked" Text="5"/>
+                <Button Grid.Row="2" x:Name="six"
+                     Grid.Column="2" FontSize="28"
+                     Clicked="Button_Clicked" Text="6"/>
+                <Button Grid.Row="2" x:Name="minus"
+                     Grid.Column="3" FontSize="28"
+                     Clicked="Button_Clicked" Text="-"/>
+
+                <Button Grid.Row="3" x:Name="one"
+                     Grid.Column="0" FontSize="28"
+                     Clicked="Button_Clicked" Text="1"/>
+                <Button Grid.Row="3" x:Name="two"
+                     Grid.Column="1" FontSize="28"
+                     Clicked="Button_Clicked" Text="2"/>
+                <Button Grid.Row="3" x:Name="three"
+                     Grid.Column="2" FontSize="28"
+                     Clicked="Button_Clicked" Text="3"/>
+                <Button Grid.Row="3" x:Name="plus"
+                     Grid.Column="3" FontSize="28"
+                     Clicked="Button_Clicked" Text="+"/>
+
+
+                <Button Grid.Row="4" x:Name="zerozero"
+                     Grid.Column="0" FontSize="28"
+                     Clicked="Button_Clicked" Text="00"/>
+                <Button Grid.Row="4" x:Name="zero"
+                     Grid.Column="1" FontSize="28"
+                     Clicked="Button_Clicked" Text="0"/>
+                <Button Grid.Row="4" x:Name="dot"
+                     Grid.Column="2" FontSize="28"
+                     Clicked="Button_Clicked" Text="."/>
+                <Button Grid.Row="4" x:Name="equals"
+                     Grid.Column="3" FontSize="28"
+                     Clicked="Button_Clicked" Text="="/>
+
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
