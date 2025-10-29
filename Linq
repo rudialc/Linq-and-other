@@ -1,0 +1,134 @@
+using System;
+using System.Collections.Generic;
+using System.Linq; // Не забудьте эту директиву! 
+// Простой класс для представления студента 
+public class Student
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public string Faculty { get; set; }
+    public double AverageGrade { get; set; }
+    public bool IsOnBudget { get; set; } // Учатся на бюджете? 
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Создаем и заполняем список студентов 
+        List<Student> students = new List<Student>
+        {
+            new Student { Id = 1, Name = "Анна Иванова", Age = 20, Faculty = "ФИИТ",
+AverageGrade = 4.5, IsOnBudget = true },
+            new Student { Id = 2, Name = "Иван Петров", Age = 22, Faculty = "ИВТ",
+AverageGrade = 3.9, IsOnBudget = false },
+            new Student { Id = 3, Name = "Мария Сидорова", Age = 19, Faculty = "ФИИТ",
+AverageGrade = 4.8, IsOnBudget = true },
+            new Student { Id = 4, Name = "Петр Кузнецов", Age = 21, Faculty = "ИВТ",
+AverageGrade = 3.2, IsOnBudget = true },
+            new Student { Id = 5, Name = "Елена Васильева", Age = 23, Faculty = "ПМИ",
+AverageGrade = 4.1, IsOnBudget = false },
+            new Student { Id = 6, Name = "Алексей Козлов", Age = 20, Faculty = "ПМИ",
+AverageGrade = 4.9, IsOnBudget = true },
+            new Student { Id = 7, Name = "Светлана Николаева", Age = 22, Faculty = "ФИИТ",
+AverageGrade = 3.7, IsOnBudget = false },
+            new Student { Id = 8, Name = "Дмитрий Орлов", Age = 19, Faculty = "ИВТ",
+AverageGrade = 4.3, IsOnBudget = true }
+        };
+
+        Task1_BasicOperations(students);
+        Task2_SortingAndAggregation(students);
+        Task3_Grouping(students);
+        Task4_Advanced(students);
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+    public static void Task1_BasicOperations(List<Student> students)
+    {
+
+        //var goodStudents = students.Where(s => s.AverageGrade >= 4.0)
+        //                          .Select(s => s.Name);
+        //foreach (var name in goodStudents)
+        //{
+        //    Console.WriteLine(name);
+        //}
+
+        //var FiitStudent = students.Where(s => s.Faculty == "ФИИТ")
+        //    .Select(s => new { s.Name, s.Age });
+        //foreach (var name in FiitStudent)
+        //{
+        //    Console.WriteLine(name.Name);
+        //    Console.WriteLine(name.Age);
+        //}
+
+        //var budgetstudent = students.Count(s => s.IsOnBudget == true);
+        //Console.WriteLine(budgetstudent);
+
+
+    }
+    public static void Task2_SortingAndAggregation(List<Student> students)
+    {
+        //var AverageStudents = students.Where(s => s.AverageGrade <=4)
+        //    .Select(s => new { s.Name, s.AverageGrade });
+        //foreach (var name in AverageStudents)
+        //{
+        //    Console.WriteLine(name.Name);
+        //    Console.WriteLine(name.AverageGrade);
+        //}
+
+        //var AverageAgeStudents = students.Average(s => s.Age);
+        //Console.WriteLine(AverageAgeStudents);
+
+        //var HighStudent = students.Max(s => s.AverageGrade);
+        //Console.WriteLine(HighStudent);
+
+        //var AverageFacultyStudent=students.GroupBy(s => s.Faculty=="ФИИТ").Count();    
+        //Console.WriteLine(AverageFacultyStudent);
+        //var AverageFaculty1Student=students.GroupBy(s => s.Faculty== "ИВТ").Count();
+        //Console.WriteLine(AverageFaculty1Student);
+        //var AverageFaculty2Student=students.GroupBy(s => s.Faculty== "ПМИ").Count();
+        //Console.WriteLine(AverageFaculty2Student);
+
+    }
+    public static void Task3_Grouping(List<Student> students)
+    {
+        //var groups = students.GroupBy(s => s.Faculty);
+        //foreach (var group in groups)
+        //{
+        //    Console.WriteLine($"Факультет: {group.Key}");
+        //    foreach (var student in group)
+        //    {
+        //        Console.WriteLine($"  - {student.Name}");
+        //    }
+        //}
+
+        //var groupsGrades = students.GroupBy(s => s.Faculty);
+        //foreach (var group in groupsGrades)
+        //{
+        //    Console.WriteLine($"Факультет: {group.Key}");
+        //    var grGr = students.Average(s => s.AverageGrade);
+        //    Console.WriteLine(grGr);
+        //}
+
+
+    }
+    public static void Task4_Advanced(List<Student> students)
+    {
+        //var oldStud = students.Where(s => s.IsOnBudget).OrderByDescending(s => s.Age).ThenBy(s => s.Name).First();
+        //Console.WriteLine(oldStud.Name);
+        //Console.WriteLine(oldStud.Age);
+
+        //var threeStudent = students.Where(s => s.Faculty=="ИВТ").OrderByDescending(s => s.AverageGrade).ThenBy(s => s.Name);
+        //foreach (var three in threeStudent)
+        //{
+        //    Console.WriteLine(three.Name);
+        //    Console.WriteLine(three.AverageGrade);
+        //}
+
+        //var boolStudent = students.Any(s => s.Faculty== "ПМИ" && s.AverageGrade > 4.5);
+        //Console.WriteLine(boolStudent);
+    }
+
+}
